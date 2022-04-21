@@ -29,5 +29,5 @@ jobs:
       - run: echo "Database Host ${{ secrets.DB_HOST }}"
       - run: echo "Environment $ENVIRONMENT"
       - run: echo "github.event.inputs.environment ${{ github.event.inputs.environment }}"
-      - run: echo "Version ${{ github.event.inputs.Version }}"
+      - run: echo "Version ${{ github.event.inputs.release }}"
 
