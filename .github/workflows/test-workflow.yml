@@ -22,7 +22,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "Database Host: ${{ secrets.DB_HOST }}"
+      - run: echo "Database Host ${{ secrets.DB_HOST }}"
       - run: echo "Environment $ENVIRONMENT"
-      - run: echo "github.event.inputs.environment: ${{ github.event.inputs.environment }}"
+      - run: echo "github.event.inputs.environment ${{ github.event.inputs.environment }}"
 
