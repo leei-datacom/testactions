@@ -6,6 +6,10 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: true
+      release:
+        description: 'The version of the container to run'
+        type: string
+        required: true
 
 jobs:
   Explore-GitHub-Actions:
@@ -25,4 +29,5 @@ jobs:
       - run: echo "Database Host ${{ secrets.DB_HOST }}"
       - run: echo "Environment $ENVIRONMENT"
       - run: echo "github.event.inputs.environment ${{ github.event.inputs.environment }}"
+      - run: echo "Version ${{ github.event.inputs.Version }}"
 
