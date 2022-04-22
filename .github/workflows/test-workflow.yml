@@ -1,18 +1,18 @@
-name: GitHub Actions Demo
+name: GitHub Deployment Demo
 on: 
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+      # environment:
+      #   description: 'Environment to run tests against'
+      #   type: environment
+      #   required: true
       release:
         description: 'The version of the container to run'
         type: string
         required: true
 
 jobs:
-  Explore-GitHub-Actions:
+  My-Build-Job:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -28,11 +28,17 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: echo "Database Host ${{ secrets.DB_HOST }}"
       - run: echo "Environment $ENVIRONMENT"
-      - run: echo "github.event.inputs.environment ${{ github.event.inputs.environment }}"
       - run: echo "Version ${{ github.event.inputs.release }}"
-  Call-Reusable-Workflow:
+  Deploy-Dev:
+    needs: My-Build-Job
     uses: ./.github/workflows/test-called-workflow.yml
     with:
-      environment:  ${{ github.event.inputs.environment }}
+      environment: dev
+      release: ${{ github.event.inputs.release }}
+  Deploy-Test:
+    needs: Deploy-Dev
+    uses: ./.github/workflows/test-called-workflow.yml
+    with:
+      environment:  test
       release: ${{ github.event.inputs.release }}
 
