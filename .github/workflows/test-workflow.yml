@@ -31,7 +31,7 @@ jobs:
       - run: echo "github.event.inputs.environment ${{ github.event.inputs.environment }}"
       - run: echo "Version ${{ github.event.inputs.release }}"
   Call-Reusable-Workflow:
-    uses: ./.github/workflows/test-called-workflows.yml
+    uses: ./.github/workflows/test-called-workflow.yml
     with:
       environment:  ${{ github.event.inputs.environment }}
       release: ${{ github.event.inputs.release }}
