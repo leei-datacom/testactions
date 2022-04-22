@@ -1,0 +1,20 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+      release:
+        type: string
+        required: true
+
+jobs:
+  reusable-job:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - run: echo "Called Environment ${{ inputs.environment }}"
+      - run: echo "Called Version ${{ inputs.release }}"
+    
+
+
