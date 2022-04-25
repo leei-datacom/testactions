@@ -4,9 +4,9 @@ on:
       environment:
         type: string
         required: true
-      release:
-        type: string
-        required: true
+      # release:
+      #   type: string
+      #   required: true
       github-ref:
         type: string
         required: true
